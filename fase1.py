@@ -10,7 +10,7 @@ load_dotenv()
 api_key = os.getenv('GROQ_API_KEY')
 
 # Inicializar el cliente de Groq con la API key
-client = Groq(api_key=api_key)
+client = Groq(api_key)
 
 # Función para generar respuestas del asistente
 def llamar(text, context):
