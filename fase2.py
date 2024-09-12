@@ -1,5 +1,5 @@
 import streamlit as st
-from groq import Groq
+from groq import Groq as _Groq
 from dotenv import load_dotenv
 import os
 
@@ -9,9 +9,14 @@ load_dotenv()
 # Obtener la API key del archivo .env
 api_key = os.getenv('GROQ_API_KEY')
 
-# Inicializar el cliente de Groq con la API key
-client = Groq(api_key=api_key)
+if api_key is None:
+    raise ValueError("La API key no está configurada. Asegúrate de que el archivo .env contenga la variable GROQ_API_KEY.")
 
+# Inicializar el cliente de Groq
+client = _Groq()
+
+# Establecer la API key en el cliente
+client.api_key = api_key
 # Función para generar respuestas del asistente
 def llamar(text, context):
     chat_completion = client.chat.completions.create(
