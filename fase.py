@@ -35,7 +35,11 @@ def llamar(text, context):
     return chat_completion.choices[0].message.content
 
 # Configuración de la aplicación
-st.set_page_config(page_title="Mi Aplicación con Pestañas", layout="wide")
+st.set_page_config(
+    page_title="Emprende tu idea", 
+    page_icon='logo.png',
+    layout="wide"
+)
 
 # Función para la primera pestaña
 def fase1():
