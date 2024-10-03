@@ -38,8 +38,92 @@ def llamar(text, context):
 st.set_page_config(
     page_title="Emprende tu idea", 
     page_icon='logo.png',
-    layout="wide"
+    
+    layout="wide" # Modifica la disposición de todos los objetos para que ocupen el máximo del espacio disponible
+    # layout="centered" # Modifica la disposición de todos los objetos para que ocupen el mismo espacio de forma centrada en el espacio disponible
 )
+
+st.markdown(
+    """
+    <style>
+    
+    /*Fuentes tipograficas*/
+    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+    
+    /* Cambiar la tipografía en todo el cuerpo de la página */
+    html, body, [class*="stText"], [class*="stButton"], [class*="stMarkdown"], [class*="stSelectbox"] {
+    }
+    
+    /* Cambiar color del sidebar */
+    [data-testid="stSidebar"] {
+        background-color: #FFB3E6; /* Código rosado */
+    }
+    
+    /* Cambiar color de los títulos en el sidebar */
+    [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3, [data-testid="stSidebar"] h4, [data-testid="stSidebar"] h5, [data-testid="stSidebar"] h6 {
+        color: #151E2B; /* Cambia esto al color que desees para los títulos */
+        # font-family: 'Anton', sans-serif;
+        font-family: 'Work Sans', sans-serif;
+    }
+
+    /* Cambiar color de los párrafos en el sidebar */
+    [data-testid="stSidebar"] p, [data-testid="stSidebar"] label, [data-testid="stSidebar"] div, [data-testid="stSidebar"] span {
+        color: #151E2B; /* Cambia esto al color que desees para los párrafos */
+        # font-family: 'Anton', sans-serif;
+        font-family: 'Work Sans', sans-serif;
+    }
+
+    [data-testid="stSidebar"] div{
+        color: #F9F1EA;
+    }
+    
+    /*Imagen logo en el sidebar, ajuste de tamaño*/
+    [data-testid="stSidebar"] img{
+        # width: 200px;
+        # height: auto;
+    }
+
+    /* Cambiar color de fondo del cuerpo principal */
+    .main {
+        background-color: #151E2B; /* Reemplaza con el código de color hexadecimal que prefieras */
+    }
+    
+    /*Partes del main como h1, p*/
+    .main h1, p{
+        color: #F9F1EA;
+        # font-family: 'Anton', sans-serif;
+        font-family: 'Work Sans', sans-serif;
+    }
+    
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Función para pestaña de descripción
+def description():
+    # Ocultar menú y opciones predeterminadas por sistema de streamlit
+    hide_st_style = """
+                <style>
+                #MainMenu {visibility: hidden;}
+                footer {visibility: hidden;}
+                header {visibility: hidden;}
+                main {background-color:pink;}
+                </style>
+                """
+    st.markdown(hide_st_style, unsafe_allow_html=True)
+    ###
+    
+    # SIDEBAR LATERAL IZQUIERDO
+    st.sidebar.image("logo.png")
+
+    st.sidebar.title('Emprende tu idea')
+    st.sidebar.write(f'Descrpción')
+    ###
+    # use_column_width=100
+    st.image('ETI-LOGOTIPO-OFFWHITEPRO.png')
+    st.title('¡Bienvenida a EMPRENDE TU IDEA!')
+    st.write('"Emprende tu Idea" es una plataforma diseñada para acompañar a mujeres emprendedoras en cada etapa de su viaje empresarial, desde la ideación hasta la validación y el lanzamiento de sus negocios, a través de cuatro fases, te brindamos las herramientas necesarias para transformar tus ideas en proyectos exitosos y sostenibles, con un enfoque innovador respaldado por inteligencia artificial que personaliza cada paso del proceso, adaptándose a tus sueños y necesidades específicas.')
 
 # Función para la primera pestaña
 def fase1():
@@ -83,13 +167,15 @@ def fase1():
     ###
 
     # SIDEBAR LATERAL IZQUIERDO
-    st.sidebar.image("logo.png", use_column_width=100)
+    st.sidebar.image("logo.png")
 
     st.sidebar.title('Emprende tu idea')
     st.sidebar.write(f'Descubre tu propósito')
     ###
-
+    
+    st.image('ETI-LOGOTIPO-OFFWHITEPRO.png')
     st.title('¡Bienvenida a descubre tu propósito!')
+    st.write('En este módulo, te guiaremos a definir tus pasiones, habilidades y valores fundamentales para ayudarte a identificar tu propósito personal y profesional, el objetivo es que descubras qué te motiva y cómo puedes alinear tus talentos con una visión clara, que servirá como base sólida para el desarrollo de tu emprendimiento.')
     st.session_state.nombre_fase1 = st.text_input('Antes de iniciar me gustaría preguntar ¿Cuál es tu nombre?, con esto ya daremos el primer paso para empezar', key='inicio_fase1')
 
     if st.session_state.nombre_fase1:
@@ -229,14 +315,15 @@ def fase2():
     ###
 
     # SIDEBAR LATERAL IZQUIERDO
-    st.sidebar.image("logo.png", use_column_width=100)
+    st.sidebar.image("logo.png")
 
     st.sidebar.title('Emprende tu idea')
     st.sidebar.write(f'Desarrolla tu idea')
     ###
 
+    st.image('ETI-LOGOTIPO-OFFWHITEPRO.png')
     st.title('¡Bienvenida a desarrolla tu idea!')
-
+    st.write('En este módulo, el enfoque estará en transformar tu idea inicial en un concepto de negocio sólido y viable, te guiaremos desde la creación del nombre de tu marca y el diseño del logotipo, hasta la definición de una propuesta de valor clara y atractiva, a través de herramientas prácticas y estrategias, te ayudaremos a estructurar el modelo de negocio completo, identificando oportunidades de mercado, y sentando las bases para el éxito de tu emprendimiento.')
     st.session_state.nombre = st.text_input('Antes de iniciar me gustaría preguntar ¿Cuál es tu nombre?, con esto ya daremos el primer paso para empezar', key='inicio_fase2')
 
     if st.session_state.nombre:
@@ -495,15 +582,15 @@ def fase3():
     ###
 
     # SIDEBAR LATERAL IZQUIERDO
-    st.sidebar.image("logo.png", use_column_width=100)
+    st.sidebar.image("logo.png")
 
     st.sidebar.title('Emprende tu idea')
     st.sidebar.write(f'Valida tu idea')
     ###
 
+    st.image('ETI-LOGOTIPO-OFFWHITEPRO.png')
     st.title('¡Bienvenida a valida tu idea!')
-
-    # Introducción y nombre del participante
+    st.write('En esta fase, el objetivo es verificar la viabilidad y el potencial de tu idea de negocio mediante la validación de la estructura de costos y las fuentes de ingreso, a través de este proceso, podrás identificar el capital mínimo necesario, proyectar utilidades y establecer todo lo necesario para lanzar tu emprendimiento, esto te permitirá asegurar una base financiera sólida y una visión clara de cómo generar ingresos sostenibles a largo plazo.')
     st.session_state.nombre = st.text_input('Antes de iniciar me gustaría preguntar ¿Cuál es tu nombre?, con esto ya daremos el primer paso para empezar', key='inicio_fase3')
 
     if st.session_state.nombre:
@@ -718,14 +805,15 @@ def fase4():
     ###
 
     # SIDEBAR LATERAL IZQUIERDO
-    st.sidebar.image("logo.png", use_column_width=100)
+    st.sidebar.image("logo.png")
 
     st.sidebar.title('Emprende tu idea')
     st.sidebar.write(f'Lanzate')
     ###
-
+    
+    st.image('ETI-LOGOTIPO-OFFWHITEPRO.png')
     st.title('¡Bienvenida a lanzate!')
-
+    st.write('En este último módulo, te prepararemos para el lanzamiento y la ejecución efectiva de tu negocio, aprenderás a diseñar tu primer diseño publicitario para compartirla en tus redes de contacto, ganando la confianza y el impulso necesarios para lanzarte y comunicarle al mundo que eres una emprendedora, este es el momento de dar a conocer tu proyecto y comenzar a atraer clientes.')
     st.session_state.nombre = st.text_input('Antes de iniciar me gustaría preguntar ¿Cuál es tu nombre?, con esto ya daremos el primer paso para empezar', key='inicio_fase4')
 
     if st.session_state.nombre:
@@ -809,9 +897,11 @@ def fase4():
                                 )
 
 # Menú de navegación en la barra lateral
-opcion = st.sidebar.selectbox("Selecciona una pestaña:", ("Fase 1", "Fase 2", "Fase 3", "Fase 4"))
+opcion = st.sidebar.selectbox("Selecciona una pestaña:", ("Descripción","Fase 1", "Fase 2", "Fase 3", "Fase 4"))
 
 # Mostrar el contenido basado en la opción seleccionada
+if opcion == "Descripción":
+    description()
 if opcion == "Fase 1":
     fase1()
 if opcion == "Fase 2":
