@@ -59,6 +59,12 @@ st.markdown(
         background-color: #FFB3E6; /* Código rosado */
     }
     
+    .st-ak{
+        background-color: #151E2B;
+        border-radius: 10px;
+        border-block-color: inherit;
+    }
+    
     /* Cambiar color de los títulos en el sidebar */
     [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3, [data-testid="stSidebar"] h4, [data-testid="stSidebar"] h5, [data-testid="stSidebar"] h6 {
         color: #151E2B; /* Cambia esto al color que desees para los títulos */
@@ -95,6 +101,20 @@ st.markdown(
         font-family: 'Work Sans', sans-serif;
     }
     
+    .st-emotion-cache-1qg05tj {
+        font-size: 14px;
+        color: #F9F1EA;
+        font-family: 'Work Sans', sans-serif;
+    }
+    
+    input{
+        background-color: color: #F9F1EA;;
+    }
+    
+    .st-emotion-cache-1tpl0xr {
+        font-family: 'Work Sans', sans-serif;
+    }
+    
     </style>
     """,
     unsafe_allow_html=True
@@ -118,7 +138,7 @@ def description():
     st.sidebar.image("logo.png")
 
     st.sidebar.title('Emprende tu idea')
-    st.sidebar.write(f'Descrpción')
+    st.sidebar.write(f'Descripción')
     ###
     # use_column_width=100
     st.image('ETI-LOGOTIPO-OFFWHITEPRO.png')
